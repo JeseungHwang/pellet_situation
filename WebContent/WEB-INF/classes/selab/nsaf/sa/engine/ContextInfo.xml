@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<information>
+	<class id="Application">
+		<mapping dataproperty="hasAdminID" json="adminID" db=""></mapping>
+		<mapping dataproperty="hasAppIP" json="appIP" db=""></mapping>
+		<mapping dataproperty="hasAppName" json="appName" db=""></mapping>
+		<mapping dataproperty="hasApplicationType" json="appType" db=""></mapping>
+	</class>
+	
+	<class id="NSLA">
+		
+		<mapping dataproperty="hasBandwidth" json="bandwidth" db=""></mapping>
+		<mapping dataproperty="hasDelay" json="delay" db=""></mapping>
+		<mapping dataproperty="hasPacketLoss" json="packetloss" db=""></mapping>
+		<mapping dataproperty="hasJitter" json="jitter" db=""></mapping>
+	</class>
+	
+	<class id="Topology">
+		<mapping dataproperty="hasTopologyID" json="topologyID" db=""></mapping>
+	</class>
+	
+	<class id="Node">
+		<mapping dataproperty="hasNodeID" json="nodeID" db=""></mapping>
+	</class>
+	
+	<class id="Switch">
+		<mapping dataproperty="hasSwitchDPID" json="switchDPID" db=""></mapping>
+		<mapping dataproperty="hasState" json="state" db=""></mapping>
+		<mapping dataproperty="hasBandwidth" json="bandwidth" db=""></mapping>
+		<mapping dataproperty="hasDelay" json="delay" db=""></mapping>
+		<mapping dataproperty="hasPacketLoss" json="packetloss" db=""></mapping>
+		<mapping dataproperty="hasJitter" json="jitter" db=""></mapping>
+	</class>
+	
+	<class id="Host">
+		<mapping dataproperty="hasState" json="state" db=""></mapping>
+	</class>
+	
+	<class id="Link">
+		<mapping dataproperty="hasLinkID" json="linkID" db=""></mapping>
+		<mapping dataproperty="hasDirection" json="direction" db=""></mapping>
+		<mapping dataproperty="hasSrcSwitchDPID" json="src-switch" db=""></mapping>
+		<mapping dataproperty="hasDstSwitchDPID" json="dst-switch" db=""></mapping>
+		<mapping dataproperty="hasSrcPort" json="src-port" db=""></mapping>
+		<mapping dataproperty="hasDstPort" json="dst-port" db=""></mapping>
+		<mapping dataproperty="hasState" json="state" db=""></mapping>
+	</class>
+
+</information>

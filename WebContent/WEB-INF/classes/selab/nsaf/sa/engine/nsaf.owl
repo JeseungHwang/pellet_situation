@@ -1,0 +1,638 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://se.ce.pusan.ac.kr/sdn/Ontology1488950196.owl"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://se.ce.pusan.ac.kr/sdn/Ontology1488950196.owl">
+    <Prefix name="" IRI="http://se.ce.pusan.ac.kr/sdn/Ontology1488950196.owl"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="xsp" IRI="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Prefix name="swrl" IRI="http://www.w3.org/2003/11/swrl#"/>
+    <Prefix name="swrla" IRI="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"/>
+    <Prefix name="swrlb" IRI="http://www.w3.org/2003/11/swrlb#"/>
+    <Prefix name="protege" IRI="http://protege.stanford.edu/plugins/owl/protege#"/>
+    <Declaration>
+        <Class IRI="#NSLA"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAppName"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multimedia_Streaming"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasHostID"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isConnected"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Low_Latency_data"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Bandwidth_Violation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasState"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSwitchID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#High_Throughput_data"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Hard_fail"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Standard"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasJitter"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAppIP"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDstPort"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Delay_Violation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#PacketLoss_Violation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Link"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSrcPort"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasLink"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Flow"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasFlowRule"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Link_Violation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasViolation"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Application"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDelay"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasTopologyID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Signaling"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasViolationType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Telephony"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Host"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#useTopology"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Jitter_Violation"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasAdminID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Application_Type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSwitchDPID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Network_Control"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasBandwidth"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDirection"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Broadcast_Video"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNode"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Multimedia_Conferencing"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Switch"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Node"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasSrcSwitchDPID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Node_Violation"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isLinked"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Soft_fail"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasApplicationType"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Violation_Type"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasNodeID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Topology"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#isDisconnected"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#hasNSLA"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasLinkID"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDstSwitchDPID"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#OAM"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Violation"/>
+    </Declaration>
+    <Declaration>
+        <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasPacketLoss"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Realtime_Interactive"/>
+    </Declaration>
+    <SubClassOf>
+        <Class IRI="#Bandwidth_Violation"/>
+        <Class IRI="#Soft_fail"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Broadcast_Video"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Delay_Violation"/>
+        <Class IRI="#Soft_fail"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Hard_fail"/>
+        <Class IRI="#Violation_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#High_Throughput_data"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Host"/>
+        <Class IRI="#Node"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Jitter_Violation"/>
+        <Class IRI="#Soft_fail"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Link"/>
+        <Class IRI="#Topology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Link_Violation"/>
+        <Class IRI="#Hard_fail"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Low_Latency_data"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multimedia_Conferencing"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Multimedia_Streaming"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Network_Control"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Node"/>
+        <Class IRI="#Topology"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Node_Violation"/>
+        <Class IRI="#Hard_fail"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#OAM"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#PacketLoss_Violation"/>
+        <Class IRI="#Soft_fail"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Realtime_Interactive"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Signaling"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Soft_fail"/>
+        <Class IRI="#Violation_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Standard"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Switch"/>
+        <Class IRI="#Node"/>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Telephony"/>
+        <Class IRI="#Application_Type"/>
+    </SubClassOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isConnected"/>
+        <ObjectProperty IRI="#isLinked"/>
+    </SubObjectPropertyOf>
+    <SubObjectPropertyOf>
+        <ObjectProperty IRI="#isDisconnected"/>
+        <ObjectProperty IRI="#isLinked"/>
+    </SubObjectPropertyOf>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasApplicationType"/>
+        <Class IRI="#Application"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasFlowRule"/>
+        <Class IRI="#Switch"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasLink"/>
+        <Class IRI="#Topology"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNSLA"/>
+        <Class IRI="#Application"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasNode"/>
+        <Class IRI="#Topology"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasViolation"/>
+        <Class IRI="#NSLA"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#hasViolationType"/>
+        <Class IRI="#Violation"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#isLinked"/>
+        <Class IRI="#Node"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#useTopology"/>
+        <Class IRI="#Application"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasApplicationType"/>
+        <Class IRI="#Application_Type"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasFlowRule"/>
+        <Class IRI="#Flow"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasLink"/>
+        <Class IRI="#Link"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNSLA"/>
+        <Class IRI="#NSLA"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasNode"/>
+        <Class IRI="#Node"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasViolation"/>
+        <Class IRI="#Violation"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#hasViolationType"/>
+        <Class IRI="#Violation_Type"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#isLinked"/>
+        <Class IRI="#Link"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#useTopology"/>
+        <Class IRI="#Topology"/>
+    </ObjectPropertyRange>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAdminID"/>
+        <Class IRI="#Application"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAppIP"/>
+        <Class IRI="#Application"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasAppName"/>
+        <Class IRI="#Application"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasBandwidth"/>
+        <Class IRI="#NSLA"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasBandwidth"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDelay"/>
+        <Class IRI="#NSLA"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDelay"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDirection"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDstPort"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasDstSwitchDPID"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasHostID"/>
+        <Class IRI="#Host"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasJitter"/>
+        <Class IRI="#NSLA"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasJitter"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasLinkID"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasNodeID"/>
+        <Class IRI="#Node"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPacketLoss"/>
+        <Class IRI="#NSLA"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasPacketLoss"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSrcPort"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSrcSwitchDPID"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasState"/>
+        <Class IRI="#Host"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasState"/>
+        <Class IRI="#Link"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasState"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSwitchDPID"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasSwitchID"/>
+        <Class IRI="#Switch"/>
+    </DataPropertyDomain>
+    <DataPropertyDomain>
+        <DataProperty IRI="#hasTopologyID"/>
+        <Class IRI="#Topology"/>
+    </DataPropertyDomain>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAdminID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAppIP"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasAppName"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasBandwidth"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDelay"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDirection"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDstPort"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasDstSwitchDPID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasHostID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasJitter"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasLinkID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasNodeID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasPacketLoss"/>
+        <Datatype abbreviatedIRI="xsd:double"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSrcPort"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSrcSwitchDPID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasState"/>
+        <Datatype abbreviatedIRI="xsd:boolean"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSwitchDPID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasSwitchID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#hasTopologyID"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Link disconnected</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Application"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#useTopology"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#t"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasLink"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#l"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasState"/>
+                <Variable IRI="#l"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#Link_Violation"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Node disconnected</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Application"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#useTopology"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#t"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNode"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#n"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasState"/>
+                <Variable IRI="#n"/>
+                <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">false</Literal>
+            </DataPropertyAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#Node_Violation"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+
