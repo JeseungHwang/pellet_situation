@@ -126,16 +126,16 @@
         <DataProperty IRI="#hasSwitchDPID"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Network_Control"/>
-    </Declaration>
-    <Declaration>
         <DataProperty IRI="#hasBandwidth"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#hasDirection"/>
+        <Class IRI="#Network_Control"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Broadcast_Video"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#hasDirection"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#hasNode"/>
@@ -153,10 +153,10 @@
         <DataProperty IRI="#hasSrcSwitchDPID"/>
     </Declaration>
     <Declaration>
-        <Class IRI="#Node_Violation"/>
+        <ObjectProperty IRI="#isLinked"/>
     </Declaration>
     <Declaration>
-        <ObjectProperty IRI="#isLinked"/>
+        <Class IRI="#Node_Violation"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Soft_fail"/>
@@ -165,19 +165,19 @@
         <ObjectProperty IRI="#hasApplicationType"/>
     </Declaration>
     <Declaration>
+        <DataProperty IRI="#hasNodeID"/>
+    </Declaration>
+    <Declaration>
         <Class IRI="#Violation_Type"/>
     </Declaration>
     <Declaration>
-        <DataProperty IRI="#hasNodeID"/>
+        <ObjectProperty IRI="#hasNSLA"/>
     </Declaration>
     <Declaration>
         <Class IRI="#Topology"/>
     </Declaration>
     <Declaration>
         <ObjectProperty IRI="#isDisconnected"/>
-    </Declaration>
-    <Declaration>
-        <ObjectProperty IRI="#hasNSLA"/>
     </Declaration>
     <Declaration>
         <DataProperty IRI="#hasLinkID"/>
@@ -559,7 +559,7 @@
         </Annotation>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Link disconnected</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Hardfail-Link Violation</Literal>
         </Annotation>
         <Body>
             <ClassAtom>
@@ -600,7 +600,227 @@
         </Annotation>
         <Annotation>
             <AnnotationProperty abbreviatedIRI="rdfs:label"/>
-            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Node disconnected</Literal>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Softfail-Bandwidth Violation</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Application"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNSLA"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#n"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasBandwidth"/>
+                <Variable IRI="#n"/>
+                <Variable IRI="#nb"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#useTopology"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#t"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNode"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#s"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasBandwidth"/>
+                <Variable IRI="#s"/>
+                <Variable IRI="#sb"/>
+            </DataPropertyAtom>
+            <BuiltInAtom abbreviatedIRI="swrlb:greaterThan">
+                <Variable IRI="#nb"/>
+                <Variable IRI="#sb"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#Bandwidth_Violation"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Softfail-Delay Violation</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Application"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNSLA"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#n"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasDelay"/>
+                <Variable IRI="#n"/>
+                <Variable IRI="#nd"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#useTopology"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#t"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNode"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#s"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasDelay"/>
+                <Variable IRI="#s"/>
+                <Variable IRI="#sd"/>
+            </DataPropertyAtom>
+            <BuiltInAtom abbreviatedIRI="swrlb:lessThan">
+                <Variable IRI="#nd"/>
+                <Variable IRI="#sd"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#Delay_Violation"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Softfail-Jitter Violation</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Application"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNSLA"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#n"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasJitter"/>
+                <Variable IRI="#n"/>
+                <Variable IRI="#nj"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#useTopology"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#t"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNode"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#s"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasJitter"/>
+                <Variable IRI="#s"/>
+                <Variable IRI="#sj"/>
+            </DataPropertyAtom>
+            <BuiltInAtom abbreviatedIRI="swrlb:lessThan">
+                <Variable IRI="#nj"/>
+                <Variable IRI="#sj"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#Jitter_Violation"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Softfail-PacketLoss Violation</Literal>
+        </Annotation>
+        <Body>
+            <ClassAtom>
+                <Class IRI="#Application"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNSLA"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#n"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasPacketLoss"/>
+                <Variable IRI="#n"/>
+                <Variable IRI="#np"/>
+            </DataPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#useTopology"/>
+                <Variable IRI="#a"/>
+                <Variable IRI="#t"/>
+            </ObjectPropertyAtom>
+            <ObjectPropertyAtom>
+                <ObjectProperty IRI="#hasNode"/>
+                <Variable IRI="#t"/>
+                <Variable IRI="#s"/>
+            </ObjectPropertyAtom>
+            <DataPropertyAtom>
+                <DataProperty IRI="#hasPacketLoss"/>
+                <Variable IRI="#s"/>
+                <Variable IRI="#sp"/>
+            </DataPropertyAtom>
+            <BuiltInAtom abbreviatedIRI="swrlb:lessThan">
+                <Variable IRI="#np"/>
+                <Variable IRI="#sp"/>
+            </BuiltInAtom>
+        </Body>
+        <Head>
+            <ClassAtom>
+                <Class IRI="#PacketLoss_Violation"/>
+                <Variable IRI="#a"/>
+            </ClassAtom>
+        </Head>
+    </DLSafeRule>
+    <DLSafeRule>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="swrla:isRuleEnabled"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#boolean">true</Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:comment"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string"></Literal>
+        </Annotation>
+        <Annotation>
+            <AnnotationProperty abbreviatedIRI="rdfs:label"/>
+            <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#string">Hardfail-Node Violation</Literal>
         </Annotation>
         <Body>
             <ClassAtom>

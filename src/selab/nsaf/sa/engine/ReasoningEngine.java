@@ -1,10 +1,9 @@
 package selab.nsaf.sa.engine;
 
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 import java.util.Set;
 
+import org.json.simple.JSONObject;
 import org.semanticweb.owlapi.io.OWLObjectRenderer;
 import org.semanticweb.owlapi.model.OWLAxiom;
 import org.semanticweb.owlapi.model.OWLClass;
@@ -30,10 +29,18 @@ import com.clarkparsia.pellet.owlapiv3.PelletReasonerFactory;
 public class ReasoningEngine {
 	
 	private static OntologyManager ontologyManager = new OntologyManager();	
-	private Map<String, String> returnValue = new HashMap<String, String>();
+	private JSONObject violationVal = new JSONObject(); 
 	private static OWLObjectRenderer renderer = new DLSyntaxObjectRenderer();
 
-	public Map<String, String> ReasonSituation(String appName) {
+	/**
+	* Method : ReasonSituation
+	* Date : 2017. 4. 10. 오후 8:02:51
+	* Author : HJS
+	* Description : 온톨로지를 이용하여 상황추론하는 메소드
+	* Input Parameter : String ApplicationName
+	* @return Violation의 종류에 따라 True or False
+	*/
+	public JSONObject ReasonSituation(String appName) {
 		System.out.println("--- Start Reasoning Situation ---");
 		OWLReasonerFactory reasonerFactory = PelletReasonerFactory.getInstance();
 		OWLReasoner reasoner = reasonerFactory.createReasoner(ontologyManager.ontologyRepository.getOntology(), new SimpleConfiguration());
@@ -41,22 +48,24 @@ public class ReasoningEngine {
 		String ontologyID = ontologyManager.ontologyRepository.getOntologyID();
 		PrefixOWLOntologyFormat pm = (PrefixOWLOntologyFormat) ontologyManager.ontologyRepository.getManager().getOntologyFormat(ontologyManager.ontologyRepository.getOntology());
 		pm.setDefaultPrefix(ontologyID + "#");
-		
-
 		OWLNamedIndividual namedIndividual = factory.getOWLNamedIndividual(":".concat(appName), pm);
-		System.out.println("Individual : "+namedIndividual.toString());
 		//최종적으로 어떤 상황인지 추론하는 부분
-		OWLClass situationClass = factory.getOWLClass(":Hard_fail", pm);
-		Set<OWLClass> classes = reasoner.getSubClasses(situationClass, false).getFlattened();
+		//Fail Class 선언
+		OWLClass hardFailClass = factory.getOWLClass(":Hard_fail", pm);
+		OWLClass softFailClass = factory.getOWLClass(":Soft_fail", pm);
+		Set<OWLClass> hardFailClasses = reasoner.getSubClasses(hardFailClass, false).getFlattened();
+		Set<OWLClass> softFailClasses = reasoner.getSubClasses(softFailClass, false).getFlattened();
+		JSONObject hardfailResult = new JSONObject();
+		JSONObject softfailResult = new JSONObject();
 		
-		for(Iterator<OWLClass> i = classes.iterator(); i.hasNext(); ) {
-			String situation_temp = ":".concat(i.next().getIRI().getFragment().toString());
+		for(Iterator<OWLClass> i = hardFailClasses.iterator(); i.hasNext(); ) {	//Hard fail인지 추론하는 부분
+			String situationType = i.next().getIRI().getFragment().toString();
+			String situation_temp = ":".concat(situationType);
 			OWLClass chOMPClass = factory.getOWLClass(situation_temp, pm);
 			OWLClassAssertionAxiom axiomToExplain = factory.getOWLClassAssertionAxiom(chOMPClass, namedIndividual);
-			
 			if(reasoner.isEntailed(axiomToExplain)) {
 				System.out.println(namedIndividual.getIRI().getFragment().toString() + " is violation : " + situation_temp);
-				returnValue.put(situation_temp, "true");
+				hardfailResult.put(situationType, "true");
 				DefaultExplanationGenerator explanationGenerator = 
 		                new DefaultExplanationGenerator(ontologyManager.ontologyRepository.getManager(), reasonerFactory, ontologyManager.ontologyRepository.getOntology(), reasoner, new SilentExplanationProgressMonitor()); 
 		        Set<OWLAxiom> explanation = explanationGenerator.getExplanation(axiomToExplain); 
@@ -65,24 +74,46 @@ public class ReasoningEngine {
 		        System.out.println(); 
 		        System.out.println("-- explanation of reasoning steps --"); 
 		        printIndented(explanationTree, "");
-		        System.out.println("!~~~~:"+explanationTree.toString());
 		        System.out.println("\n");
 			} else {
 				System.out.println(namedIndividual.getIRI().getFragment().toString() + " is not in situation " + situation_temp);
-				returnValue.put(situation_temp, "false");
 			}
+			violationVal.put("hardfail", hardfailResult);
 		}
 		
+		for(Iterator<OWLClass> i = softFailClasses.iterator(); i.hasNext(); ) {	//Soft fail인지 추론하는 부분
+			String situationType = i.next().getIRI().getFragment().toString();
+			String situation_temp = ":".concat(situationType);
+			OWLClass chOMPClass = factory.getOWLClass(situation_temp, pm);
+			OWLClassAssertionAxiom axiomToExplain = factory.getOWLClassAssertionAxiom(chOMPClass, namedIndividual);
+			
+			if(reasoner.isEntailed(axiomToExplain)) {
+				System.out.println(namedIndividual.getIRI().getFragment().toString() + " is violation : " + situation_temp);
+				softfailResult.put(situationType, "true");
+				DefaultExplanationGenerator explanationGenerator = 
+		                new DefaultExplanationGenerator(ontologyManager.ontologyRepository.getManager(), reasonerFactory, ontologyManager.ontologyRepository.getOntology(), reasoner, new SilentExplanationProgressMonitor()); 
+		        Set<OWLAxiom> explanation = explanationGenerator.getExplanation(axiomToExplain); 
+		        ExplanationOrderer deo = new ExplanationOrdererImpl(ontologyManager.ontologyRepository.getManager()); 
+		        ExplanationTree explanationTree = deo.getOrderedExplanation(axiomToExplain, explanation); 
+		        System.out.println(); 
+		        System.out.println("-- explanation of reasoning steps --"); 
+		        printIndented(explanationTree, "");
+		        System.out.println("\n");
+			} else {
+				System.out.println(namedIndividual.getIRI().getFragment().toString() + " is not in situation " + situation_temp);
+			}
+			violationVal.put("softfail", softfailResult);
+		}
 		System.out.println("\n");
-		return returnValue;
+		return violationVal;
 	}
 	
-	public Map<String, String> getAllReturnValue_RE() {
-		return returnValue;
+	public JSONObject getViolationVal() {
+		return violationVal;
 	}
 	
 	public boolean getResultBySituation(OWLClass situation) {
-		if(returnValue.get(situation.toString()).equalsIgnoreCase("true"))
+		if(violationVal.get(situation.toString()).equals("true"))
 			return true;
 		else
 			return false;
@@ -97,33 +128,4 @@ public class ReasoningEngine {
             } 
         } 
     }
-	
-	
-	/*public void ReasonSituation(String userID, String ontologyID) {
-		String ontoID = ontologyID;
-		OWLOntologyManager manager = ontologyRepository.getOntologyManagerbyOntoID(ontoID);
-		OWLOntology ontology = ontologyRepository.getOntologybyOntoID(ontoID);
-		OWLReasonerFactory reasonerFactory = PelletReasonerFactory.getInstance();
-		OWLReasoner reasoner = reasonerFactory.createReasoner(ontology, new SimpleConfiguration());
-		OWLDataFactory factory = manager.getOWLDataFactory();
-		PrefixOWLOntologyFormat pm = (PrefixOWLOntologyFormat) manager.getOntologyFormat(ontology);
-		pm.setDefaultPrefix(ontoID + "#");
-		
-		OWLNamedIndividual namedIndividual = factory.getOWLNamedIndividual(":" + userID, pm); 
-		
-		OWLClass situationClass = factory.getOWLClass(":Situation", pm);
-		
-		Set<OWLClass> classes = reasoner.getSubClasses(situationClass, false).getFlattened();
-		
-		for(Iterator i = classes.iterator(); i.hasNext(); ) {
-			OWLClass chOMPClass = factory.getOWLClass(":" + i.next(), pm);
-			OWLClassAssertionAxiom axiomToExplain = factory.getOWLClassAssertionAxiom(chOMPClass, namedIndividual);
-			if(reasoner.isEntailed(axiomToExplain) == true)
-				System.out.println(namedIndividual.toString() + " is in situation " + i.next());
-		}
-        
-        //return chOMPClass;
-	}*/
-	
-	
 }
